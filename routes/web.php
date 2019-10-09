@@ -33,3 +33,12 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'as' => 'admin.', '
      */
     include_route_files(__DIR__.'/backend/');
 });
+
+
+
+
+// amadeus controller and route
+Route::get('/frontend.index', 'AmadeusController@getAirPortListing')->name('frontend.index');
+Route::get('/', 'AmadeusController@getAirPortListing');
+
+Route::post('/flight-search', 'AmadeusController@getFlightListing');

@@ -13,7 +13,7 @@
 							<div class="single-about-us">
 								<div class="about-us-txt">
 									<h2 class="animated fadeInUp" style="opacity: 0;">
-										Explore the Beauty of the Beautiful World 
+										Explore the Beauty of the Beautiful World
 
 									</h2>
 									<div class="about-btn">
@@ -55,9 +55,10 @@
 
 								<!-- Tab panes -->
 								<div class="tab-content">
-
+								<form action="{{url('flight-search')}}" method="post">
+								{!! csrf_field() !!}
 									<div role="tabpanel" class="tab-pane active fade in" id="tours">
-                                                                            <div class="tab-para">
+                                            <div class="tab-para">
 											<div class="trip-circle">
 												<div class="single-trip-circle">
 													<input type="radio" id="radio01" name="radio">
@@ -83,15 +84,13 @@
 														<h2>from</h2>
 
 														<div class="travel-select-icon">
-															<select class="form-control js-example-basic-single">
-
+															<select class="form-control js-example-basic-single" required name="from">
 															  	<option value="default" selected="selected">enter your location</option><!-- /.option-->
-
-															  	<option value="turkey">turkey</option><!-- /.option-->
-
-															  	<option value="russia">russia</option><!-- /.option-->
-															  	<option value="egept">egypt</option><!-- /.option-->
-
+																@if ($locationArray)
+																	@foreach ($locationArray as $location)
+																		<option value="{{$location['iatacode']}}">{{$location['name']}}, <br/><span>{{$location['countryName']}}</span>  <h2>{{$location['iatacode']}}</h2></option>
+																	@endforeach
+																@endif
 															</select><!-- /.select-->
 														</div><!-- /.travel-select-icon -->
 													</div><!--/.single-tab-select-box-->
@@ -101,9 +100,7 @@
 													<div class="single-tab-select-box">
 														<h2>departure</h2>
 														<div class="travel-check-icon">
-															<form action="http://demo.themesine.com/#">
-																<input type="text" name="departure" class="form-control" data-toggle="datepicker" placeholder="12 -01 - 2017 " value="">
-															</form>
+																<input type="text" name="departure" required class="form-control" data-toggle="datepicker" placeholder="{{date('Y-m-d')}}" value="">
 														</div><!-- /.travel-check-icon -->
 													</div><!--/.single-tab-select-box-->
 												</div><!--/.col-->
@@ -112,9 +109,7 @@
 													<div class="single-tab-select-box">
 														<h2>return</h2>
 														<div class="travel-check-icon">
-															<form action="http://demo.themesine.com/#">
-																<input type="text" name="return" class="form-control" data-toggle="datepicker" placeholder="22 -01 - 2017 " value="">
-															</form>
+																<input type="text" name="return" required class="form-control" data-toggle="datepicker" placeholder="{{date('Y-m-d')}}" value="">
 														</div><!-- /.travel-check-icon -->
 													</div><!--/.single-tab-select-box-->
 												</div><!--/.col-->
@@ -164,15 +159,14 @@
 														<h2>to</h2>
 
 														<div class="travel-select-icon">
-															<select class="form-control js-example-basic-single">
+															<select class="form-control js-example-basic-single" name="to" required>
 
 															  	<option value="default" selected="selected">enter your destination location</option><!-- /.option-->
-
-															  	<option value="istambul">istambul</option><!-- /.option-->
-
-															  	<option value="mosko">mosko</option><!-- /.option-->
-															  	<option value="cairo">cairo</option><!-- /.option-->
-
+																  @if ($locationArray)
+																	@foreach ($locationArray as $location)
+																		<option value="{{$location['iatacode']}}">{{$location['name']}}, <br/><span>{{$location['countryName']}}</span>  <h2>{{$location['iatacode']}}</h2></option>
+																	@endforeach
+																@endif
 															</select><!-- /.select-->
 														</div><!-- /.travel-select-icon -->
 
@@ -209,7 +203,7 @@
 										</div>
 
 									</div><!--/.tabpannel-->
-
+									</form><!--- search form--->
 								</div><!--/.tab content-->
 							</div><!--/.desc-tabs-->
         				</div><!--/.single-travel-box-->
@@ -475,3 +469,10 @@
 		<!--subscribe end-->
 
 @endsection
+@push('scripts')
+<script type="text/javascript">
+$(document).ready(function() {
+    alert('sss');
+})
+</script>
+@endpush
