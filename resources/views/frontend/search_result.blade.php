@@ -176,13 +176,95 @@
 
         </section><!--/.travel-box-->
 		<!--travel-box end-->
+                
+                @foreach($flights as $flight)
+                @foreach($flight['segments'] as $segment)
+                
+                <section>
+                    <div class="container">
+                        <div class="row">
+                <div class="fli-list-body-section" style="border-bottom: 1px solid rgb(216, 234, 255);">
+                    <div class="dept-options" style="margin: 0px 130px;">
+                        <div class="dept-options-section clearfix">
+                            <div class="col-md-2">
+                                <div class="pull-left airline-info">
+                                    <div class="pull-left">
+                                        <span class=" ">
+                                            <span class="arln-logo logo1" style="background-image: url(&quot;https://imgak.mmtcdn.com/flights/assets/media/dt/common/icons/AI.png?v=4&quot;);"></span>
+
+                                        </span>
+                                    </div>
+                                    <div class="pull-left airways-info-sect">
+                                        <p><span class="airways-name ">{{$carriers[$segment['flightSegment']['carrierCode']]}}</span></p>
+                                        <p class="fli-code">{{$segment['flightSegment']['aircraft']['code']}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                            <div class="pull-left">
+                                <div class="">
+                                    <div class="make_relative">
+                                        <div class="timing-option ">
+                                            <label for="jrnya96a9365-3208-48bd-8829-dbcd418d8c2e_DEL$BLR$1110190610$AI-803" class="clearfix radio" style="cursor: default;">
+                                                <span style="width: 18px; height: 18px; display: block; margin-right: 9px; margin-top: 4px; float: left;">&nbsp;</span>
+                                                <div class="fli-time-section pull-left departure">
+                                                    <div class="dept-time">{{\Carbon\Carbon::parse($segment['flightSegment']['departure']['at'])->format('h:i')}}</div>
+                                                    <p class="dept-city">{{$segment['flightSegment']['departure']['iataCode']}}</p>
+                                                </div>
+                                                <div class="pull-left fli-stops make_relative">
+                                                    <p class="fli-duration">
+                                                        {{$segment['flightSegment']['duration']}}
+                                                        <!--<strong>02</strong> hrs <strong>45</strong> mins--> 
+                                                    </p>
+                                                    <div class="make_relative fli-stops-sep">
+                                                        <p class="fli-stops-seperator"></p>
+                                                    </div>
+                                                    <p class="fli-stops-desc">Non stop</p>
+                                                </div>
+                                                <div class="fli-time-section pull-left arrival">
+                                                    <div class="text-left pull-left wdh_full">
+                                                        <p class="reaching-time append_bottom3">{{\Carbon\Carbon::parse($segment['flightSegment']['arrival']['at'])->format('h:i')}}
+                                                            <span class="plusDay-info make_relative">
+                                                                <span class="fli-trvlDays LatoBold"></span>
+                                                                    
+                                                            </span>
+                                                        </p>
+                                                        <p class="arrival-city">{{$segment['flightSegment']['arrival']['iataCode']}}</p>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="col-md-1">
+                            <div class="pull-left  make_relative price">
+                                <p><span class="actual-price">$ {{$flight['price']['total']}}</span></p>
+                            </div>
+                            </div>
+                            <div class="col-md-2">
+                            <div class="pull-left make_relative">
+                                <button id="bookbutton-RKEY:b1c80e9e-1602-409d-9539-2bf9ce1e8e54:0" class="fli_primary_btn text-uppercase ">Book Now</button>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                </div>
+                        </div>
+                                </section>
+                @endforeach
+                @endforeach
+                            
 
 
-<?php print_r($carriers);
-dump($flights);
-dump($currencies);
-dump($aircraft);
-dump($locations);
+<?php 
+//print_r($carriers['UA']);
+//dump($flights);
+//dump($currencies);
+//dump($aircraft);
+//dump($locations);
 ?>
 
 @endsection

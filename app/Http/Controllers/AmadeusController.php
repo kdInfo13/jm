@@ -117,7 +117,7 @@ class AmadeusController extends Controller
         }else{
             $src= "https://test.api.amadeus.com/v1/shopping/flight-offers?origin=$from&destination=$to&departureDate=$departure&returnDate=$return&adults=$adults";
         }
-        // dd($src);
+         
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
