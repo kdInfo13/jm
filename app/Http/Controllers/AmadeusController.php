@@ -101,17 +101,27 @@ class AmadeusController extends Controller
     * return flight details
     */
     public function getFlightListing(Request $request){
-//  dd($request->get('to'));
+//  dd($request->all());
+        $return = '';
         $departure = Carbon::parse($request->departure)->format('Y-m-d');
-        $return = Carbon::parse($request->return)->format('Y-m-d');
+        if($request->return){
+            $return = Carbon::parse($request->return)->format('Y-m-d');
+        }
+        $adults = $request->adults;
         $from = $request->get('from');
         $to = $request->get('to');
         $token = $this->generateToken();
 
+        if(empty($return)){
+            $src= "https://test.api.amadeus.com/v1/shopping/flight-offers?origin=$from&destination=$to&departureDate=$departure&adults=$adults";
+        }else{
+            $src= "https://test.api.amadeus.com/v1/shopping/flight-offers?origin=$from&destination=$to&departureDate=$departure&returnDate=$return&adults=$adults";
+        }
+        // dd($src);
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-        CURLOPT_URL => "https://test.api.amadeus.com/v1/shopping/flight-offers?origin=$from&destination=$to&departureDate=$departure&returnDate=$return",
+        CURLOPT_URL => $src,
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => "",
         CURLOPT_MAXREDIRS => 10,
@@ -132,7 +142,32 @@ class AmadeusController extends Controller
         if ($err) {
         echo "cURL Error #:" . $err;
         } else {
-            dd(json_decode($response, true));
+            $res = json_decode($response, true);
         }
+
+        if($res){
+            $flights = array();
+            $carriers = '' ; $currencies = ''; $aircraft = ''; $locations = ''; 
+            foreach ($res['data'] as $key => $value) {
+                // dd($value['offerItems'][0]['services'][0]['segments']);
+                $flights[] = array(
+                    'segments' => $value['offerItems'][0]['services'][0]['segments'],
+                    'price' => $value['offerItems'][0]['price'],
+                    'pricePerAdult' => $value['offerItems'][0]['pricePerAdult'],
+                );
+                $carriers = $res['dictionaries']['carriers'];
+                $currencies = $res['dictionaries']['currencies'];
+                $aircraft = $res['dictionaries']['aircraft'];
+                $locations = $res['dictionaries']['locations'];
+            }
+        }
+
+        $data['flights'] = $flights;
+        $data['carriers'] = $carriers;
+        $data['currencies'] = $currencies;
+        $data['aircraft'] = $aircraft;
+        $data['locations'] = $locations;
+
+        return view('frontend.search_result', $data);
     }
 }

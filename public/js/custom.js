@@ -2,6 +2,18 @@ $(document).ready(function(){
     
 //load countries    
 $('.js-example-basic-single').select2();
+$(".flight-type").on('change', function() {
+	if(this.value == 'oneway'){
+        $("#return").hide();
+        $(".return").removeAttr('required');
+        $(".return").val('');
+    }else{
+        $("#return").show();
+    }
+
+});
+
+
 	"use strict";
 
     

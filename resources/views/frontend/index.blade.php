@@ -61,7 +61,7 @@
                                             <div class="tab-para">
 											<div class="trip-circle">
 												<div class="single-trip-circle">
-													<input type="radio" id="radio01" name="radio">
+													<input type="radio" id="radio01" value="round" class="flight-type" name="flight_type" checked>
   													<label for="radio01">
   														<span class="round-boarder">
   															<span class="round-boarder1"></span>
@@ -69,7 +69,7 @@
   													</label>
 												</div><!--/.single-trip-circle-->
 												<div class="single-trip-circle">
-													<input type="radio" id="radio02" name="radio">
+													<input type="radio" id="radio02" value="oneway" class="flight-type" name="flight_type">
   													<label for="radio02">
   														<span class="round-boarder">
   															<span class="round-boarder1"></span>
@@ -96,7 +96,7 @@
 													</div><!--/.single-tab-select-box-->
 												</div><!--/.col-->
 
-												<div class="col-lg-2 col-md-3 col-sm-4">
+												<div class="col-lg-2 col-md-3 col-sm-4" id="departure">
 													<div class="single-tab-select-box">
 														<h2>departure</h2>
 														<div class="travel-check-icon">
@@ -105,11 +105,11 @@
 													</div><!--/.single-tab-select-box-->
 												</div><!--/.col-->
 
-												<div class="col-lg-2 col-md-3 col-sm-4">
+												<div class="col-lg-2 col-md-3 col-sm-4" id="return">
 													<div class="single-tab-select-box">
 														<h2>return</h2>
 														<div class="travel-check-icon">
-																<input type="text" name="return" required class="form-control" data-toggle="datepicker" placeholder="{{date('Y-m-d')}}" value="">
+																<input type="text"  name="return" required class="form-control return" data-toggle="datepicker" placeholder="{{date('Y-m-d')}}" value="">
 														</div><!-- /.travel-check-icon -->
 													</div><!--/.single-tab-select-box-->
 												</div><!--/.col-->
@@ -118,16 +118,7 @@
 													<div class="single-tab-select-box">
 														<h2>adults</h2>
 														<div class="travel-select-icon">
-															<select class="form-control js-example-basic-single">
-
-															  	<option value="default" selected="selected">5</option><!-- /.option-->
-
-															  	<option value="10">10</option><!-- /.option-->
-
-															  	<option value="15">15</option><!-- /.option-->
-															  	<option value="20">20</option><!-- /.option-->
-
-															</select><!-- /.select-->
+															<input type="number" min=1 class="form-control" name="adults">
 														</div><!-- /.travel-select-icon -->
 													</div><!--/.single-tab-select-box-->
 												</div><!--/.col-->
@@ -172,24 +163,22 @@
 
 													</div><!--/.single-tab-select-box-->
 												</div><!--/.col-->
-												<div class="col-lg-3 col-md-3 col-sm-4">
+												<!-- <div class="col-lg-3 col-md-3 col-sm-4">
 													<div class="single-tab-select-box">
 
 														<h2>class</h2>
 														<div class="travel-select-icon">
 															<select class="form-control js-example-basic-single">
 
-															  	<option value="default" selected="selected">enter class</option><!-- /.option-->
+															  	<option value="default" selected="selected">enter class</option>
+															  	<option value="A">A</option>
+															  	<option value="B">B</option>
+															  	<option value="C">C</option>
 
-															  	<option value="A">A</option><!-- /.option-->
-
-															  	<option value="B">B</option><!-- /.option-->
-															  	<option value="C">C</option><!-- /.option-->
-
-															</select><!-- /.select-->
-														</div><!-- /.travel-select-icon -->
-													</div><!--/.single-tab-select-box-->
-												</div><!--/.col-->
+															</select>
+														</div>
+													</div>
+												</div> -->
 												<div class="clo-sm-5">
 													<div class="about-btn pull-right">
 														<button class="about-view travel-btn">
@@ -472,7 +461,7 @@
 @push('scripts')
 <script type="text/javascript">
 $(document).ready(function() {
-    alert('sss');
+alert("ff");
 })
 </script>
 @endpush
