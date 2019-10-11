@@ -170,7 +170,16 @@ $(".flight-type").on('change', function() {
         });
 
     // 5. datepicker
-            $('[data-toggle="datepicker"]').datepicker();
+    var today;
+    today = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
+    $('[data-toggle="datepicker1"]').datepicker({
+            uiLibrary: 'bootstrap4',
+            minDate: today
+        });
+            $('[data-toggle="datepicker2"]').datepicker({
+            uiLibrary: 'bootstrap4',
+            minDate: today
+        });
 
     // 6. Smooth Scroll spy
         

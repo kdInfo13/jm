@@ -1567,4 +1567,8 @@ b, strong {
 .text-uppercase {
     text-transform: uppercase;
 }
+
+.input-group-append {
+    display: none;
+}
 /*========================Thank you=================*/

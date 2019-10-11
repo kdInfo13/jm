@@ -100,7 +100,7 @@
 													<div class="single-tab-select-box">
 														<h2>departure</h2>
 														<div class="travel-check-icon">
-																<input type="text" name="departure" required class="form-control" data-toggle="datepicker" placeholder="{{date('Y-m-d')}}" value="">
+																<input type="text" name="departure" required class="form-control" data-toggle="datepicker1" placeholder="{{date('Y-m-d')}}" value="">
 														</div><!-- /.travel-check-icon -->
 													</div><!--/.single-tab-select-box-->
 												</div><!--/.col-->
@@ -109,7 +109,7 @@
 													<div class="single-tab-select-box">
 														<h2>return</h2>
 														<div class="travel-check-icon">
-																<input type="text"  name="return" required class="form-control return" data-toggle="datepicker" placeholder="{{date('Y-m-d')}}" value="">
+																<input type="text"  name="return" required class="form-control return" data-toggle="datepicker2" placeholder="{{date('Y-m-d')}}" value="">
 														</div><!-- /.travel-check-icon -->
 													</div><!--/.single-tab-select-box-->
 												</div><!--/.col-->

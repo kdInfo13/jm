@@ -35,6 +35,7 @@
         <link rel="stylesheet" href="{{ asset('css/theme/owl.theme.default.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/theme/jquery-ui.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/theme/bootstrap.min.css') }}">
+        <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
         <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">-->
         <link rel="stylesheet" href="{{ asset('css/theme/bootsnav.css') }}">
         <link rel="stylesheet" href="{{ asset('css/theme/style.css') }}">
@@ -80,7 +81,8 @@
         <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
         <script src="{{ asset('js/jquery.sticky.js') }}"></script>
         <script src="{{ asset('js/jquery.sticky.js') }}"></script>
-        <script src="{{ asset('js/datepicker.js') }}"></script>
+        <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+        <!--<script src="{{ asset('js/datepicker.js') }}"></script>-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/js/select2.min.js"></script>
         <script src="{{ asset('js/custom.js') }}"></script>
 
